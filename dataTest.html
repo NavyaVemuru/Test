@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Radiation Digital Twin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>🌐 Radiation Digital Twin Dashboard</h1>
+    <div class="chart-container">
+      <canvas id="radiationChart"></canvas>
+    </div>
+  </div>
+ 
+  <script>
+    const ctx = document.getElementById('radiationChart').getContext('2d');
+    const radiationChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [
+          '00:00', '01:00', '02:00', '03:00', '04:00'
+        ],
+        datasets: [{
+          label: 'Radiation Level (µSv/h)',
+          data: [0.12, 0.15, 0.18, 0.14, 0.16],
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: '#ff6384',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top'
+          },
+          title: {
+            display: true,
+            text: 'Radiation Levels Over Time'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'µSv/h'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Time'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
